@@ -150,11 +150,10 @@ export default function AddTransactionModal({
                 onChange={(e) =>
                   setFormData({ ...formData, description: e.target.value })
                 }
-                className={`w-full px-4 py-2 rounded-lg bg-zinc-800 border transition-colors text-zinc-100 placeholder-zinc-500 focus:outline-none ${
-                  errors.description
+                className={`w-full px-4 py-2 rounded-lg bg-zinc-800 border transition-colors text-zinc-100 placeholder-zinc-500 focus:outline-none ${errors.description
                     ? 'border-red-500 focus:border-red-500'
                     : 'border-zinc-700 focus:border-emerald-400'
-                }`}
+                  }`}
               />
               {errors.description && (
                 <p className="text-red-400 text-sm mt-1">{errors.description}</p>
@@ -175,11 +174,10 @@ export default function AddTransactionModal({
                 onChange={(e) =>
                   setFormData({ ...formData, amount: e.target.value })
                 }
-                className={`w-full px-4 py-2 rounded-lg bg-zinc-800 border transition-colors text-zinc-100 placeholder-zinc-500 focus:outline-none ${
-                  errors.amount
+                className={`w-full px-4 py-2 rounded-lg bg-zinc-800 border transition-colors text-zinc-100 placeholder-zinc-500 focus:outline-none ${errors.amount
                     ? 'border-red-500 focus:border-red-500'
                     : 'border-zinc-700 focus:border-emerald-400'
-                }`}
+                  }`}
               />
               {errors.amount && (
                 <p className="text-red-400 text-sm mt-1">{errors.amount}</p>

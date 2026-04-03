@@ -52,7 +52,7 @@ export default function SpendingDonutChart({ transactions }: SpendingDonutChartP
                   borderRadius: '8px',
                   color: '#fafafa',
                 }}
-                formatter={(value: number) => `$${value.toLocaleString()}`}
+                formatter={(value) => `$${typeof value === 'number' ? value.toLocaleString() : 0}`}
               />
               <Pie
                 data={chartData}
@@ -73,8 +73,8 @@ export default function SpendingDonutChart({ transactions }: SpendingDonutChartP
           {/* Legend */}
           <div className="mt-6 grid grid-cols-2 gap-3 text-sm">
             {chartData.map((item, index) => {
-              const percentage = totalExpenses > 0 
-                ? Math.round((item.value / totalExpenses) * 100) 
+              const percentage = totalExpenses > 0
+                ? Math.round((item.value / totalExpenses) * 100)
                 : 0
               return (
                 <div key={item.name} className="flex items-center gap-2">

@@ -110,9 +110,8 @@ export default function TransactionTable() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.05 }}
-                    className={`border-b border-zinc-800 hover:bg-zinc-800/50 transition-colors ${
-                      index % 2 === 0 ? 'bg-zinc-900/50' : 'bg-zinc-900'
-                    }`}
+                    className={`border-b border-zinc-800 hover:bg-zinc-800/50 transition-colors ${index % 2 === 0 ? 'bg-zinc-900/50' : 'bg-zinc-900'
+                      }`}
                   >
                     <td className="px-6 py-4 text-sm text-zinc-400">
                       {formatDate(tx.date)}
@@ -125,21 +124,19 @@ export default function TransactionTable() {
                     </td>
                     <td className="px-6 py-4 text-sm">
                       <span
-                        className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
-                          tx.type === 'income'
+                        className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${tx.type === 'income'
                             ? 'bg-emerald-400/20 text-emerald-400'
                             : 'bg-red-400/20 text-red-400'
-                        }`}
+                          }`}
                       >
                         {tx.type === 'income' ? 'Income' : 'Expense'}
                       </span>
                     </td>
                     <td
-                      className={`px-6 py-4 text-sm font-semibold text-right ${
-                        tx.type === 'income'
+                      className={`px-6 py-4 text-sm font-semibold text-right ${tx.type === 'income'
                           ? 'text-emerald-400'
                           : 'text-red-400'
-                      }`}
+                        }`}
                     >
                       {tx.type === 'income' ? '+' : '-'}
                       {formatCurrency(Math.abs(tx.amount))}

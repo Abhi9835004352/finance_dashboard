@@ -36,11 +36,10 @@ export default function Sidebar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`block px-4 py-3 rounded-lg transition-all font-medium text-sm ${
-                  isActive
+                className={`block px-4 py-3 rounded-lg transition-all font-medium text-sm ${isActive
                     ? 'bg-emerald-400/20 text-emerald-400 border-l-2 border-emerald-400'
                     : 'text-zinc-400 hover:text-zinc-300 hover:bg-zinc-800/50'
-                }`}
+                  }`}
               >
                 <span className="mr-3">{item.icon}</span>
                 {item.label}

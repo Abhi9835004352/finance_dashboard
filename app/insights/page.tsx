@@ -60,8 +60,8 @@ export default function InsightsPage() {
             savingsRate >= 20
               ? 'Great job! You\'re saving well.'
               : savingsRate >= 10
-              ? 'Good savings rate. Keep it up!'
-              : 'Consider increasing your savings.'
+                ? 'Good savings rate. Keep it up!'
+                : 'Consider increasing your savings.'
           }
           icon="💪"
           statusColor={getSavingsRateStatusColor(savingsRate)}
