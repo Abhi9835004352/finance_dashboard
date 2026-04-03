@@ -40,8 +40,6 @@ export default function Topbar() {
 
         {/* Right side - Controls */}
         <div className="flex items-center gap-4">
-          <ThemeToggle />
-          <RoleSwitcher />
         </div>
       </div>
     </header>

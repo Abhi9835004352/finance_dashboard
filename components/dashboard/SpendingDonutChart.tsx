@@ -52,7 +52,7 @@ export default function SpendingDonutChart({ transactions }: SpendingDonutChartP
                   borderRadius: '8px',
                   color: '#fafafa',
                 }}
-                formatter={(value) => `$${typeof value === 'number' ? value.toLocaleString() : 0}`}
+                formatter={(value: number) => `$${value.toLocaleString()}`}
               />
               <Pie
                 data={chartData}
