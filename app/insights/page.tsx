@@ -30,9 +30,9 @@ export default function InsightsPage() {
   }
 
   return (
-    <div className="p-6 space-y-8">
+    <div className="p-3 md:p-6 space-y-4 md:space-y-8">
       {/* Insight Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
         {/* Top Spending Category */}
         {topSpending ? (
           <InsightCard
@@ -88,7 +88,7 @@ export default function InsightsPage() {
       </div>
 
       {/* Charts */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 md:gap-6">
         <MonthlyComparisonChart data={monthlyData} />
       </div>
     </div>

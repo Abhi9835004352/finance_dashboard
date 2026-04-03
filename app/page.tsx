@@ -21,9 +21,9 @@ export default function Home() {
   const monthlyData = getMonthlyData(transactions, 6)
 
   return (
-    <div className="p-6 space-y-8">
+    <div className="p-3 md:p-6 space-y-4 md:space-y-8">
       {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6">
         <SummaryCard
           title="Total Balance"
           value={formatCurrency(balance)}
@@ -45,7 +45,7 @@ export default function Home() {
       </div>
 
       {/* Charts */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 md:gap-6">
         <BalanceTrendChart data={monthlyData} />
         <SpendingDonutChart transactions={transactions} />
       </div>

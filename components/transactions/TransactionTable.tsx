@@ -74,30 +74,30 @@ export default function TransactionTable() {
 
   return (
     <>
-      {/* Table Container */}
-      <div className="rounded-lg border border-zinc-800 bg-zinc-900 overflow-hidden">
+      {/* Desktop Table View */}
+      <div className="hidden md:block rounded-lg border border-zinc-800 bg-zinc-900 overflow-hidden">
         {filtered.length > 0 ? (
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
                 <tr className="border-b border-zinc-800 bg-zinc-800/50">
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-zinc-300">
+                  <th className="px-4 md:px-6 py-3 md:py-4 text-left text-sm font-semibold text-zinc-300">
                     Date
                   </th>
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-zinc-300">
+                  <th className="px-4 md:px-6 py-3 md:py-4 text-left text-sm font-semibold text-zinc-300">
                     Description
                   </th>
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-zinc-300">
+                  <th className="px-4 md:px-6 py-3 md:py-4 text-left text-sm font-semibold text-zinc-300">
                     Category
                   </th>
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-zinc-300">
+                  <th className="px-4 md:px-6 py-3 md:py-4 text-left text-sm font-semibold text-zinc-300">
                     Type
                   </th>
-                  <th className="px-6 py-4 text-right text-sm font-semibold text-zinc-300">
+                  <th className="px-4 md:px-6 py-3 md:py-4 text-right text-sm font-semibold text-zinc-300">
                     Amount
                   </th>
                   {role === 'admin' && (
-                    <th className="px-6 py-4 text-right text-sm font-semibold text-zinc-300">
+                    <th className="px-4 md:px-6 py-3 md:py-4 text-right text-sm font-semibold text-zinc-300">
                       Actions
                     </th>
                   )}
@@ -113,18 +113,18 @@ export default function TransactionTable() {
                     className={`border-b border-zinc-800 hover:bg-zinc-800/50 transition-colors ${index % 2 === 0 ? 'bg-zinc-900/50' : 'bg-zinc-900'
                       }`}
                   >
-                    <td className="px-6 py-4 text-sm text-zinc-400">
+                    <td className="px-4 md:px-6 py-3 md:py-4 text-sm text-zinc-400">
                       {formatDate(tx.date)}
                     </td>
-                    <td className="px-6 py-4 text-sm text-zinc-100 font-medium">
+                    <td className="px-4 md:px-6 py-3 md:py-4 text-sm text-zinc-100 font-medium">
                       {tx.description}
                     </td>
-                    <td className="px-6 py-4 text-sm text-zinc-400">
+                    <td className="px-4 md:px-6 py-3 md:py-4 text-sm text-zinc-400">
                       {tx.category}
                     </td>
-                    <td className="px-6 py-4 text-sm">
+                    <td className="px-4 md:px-6 py-3 md:py-4 text-sm">
                       <span
-                        className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${tx.type === 'income'
+                        className={`inline-block px-2 md:px-3 py-1 rounded-full text-xs font-semibold ${tx.type === 'income'
                             ? 'bg-emerald-400/20 text-emerald-400'
                             : 'bg-red-400/20 text-red-400'
                           }`}
@@ -133,7 +133,7 @@ export default function TransactionTable() {
                       </span>
                     </td>
                     <td
-                      className={`px-6 py-4 text-sm font-semibold text-right ${tx.type === 'income'
+                      className={`px-4 md:px-6 py-3 md:py-4 text-sm font-semibold text-right ${tx.type === 'income'
                           ? 'text-emerald-400'
                           : 'text-red-400'
                         }`}
@@ -142,11 +142,11 @@ export default function TransactionTable() {
                       {formatCurrency(Math.abs(tx.amount))}
                     </td>
                     {role === 'admin' && (
-                      <td className="px-6 py-4 text-sm text-right">
+                      <td className="px-4 md:px-6 py-3 md:py-4 text-sm text-right">
                         <div className="flex items-center justify-end gap-2">
                           <motion.button
                             onClick={() => handleEdit(tx)}
-                            className="p-2 text-zinc-400 hover:text-emerald-400 transition-colors"
+                            className="p-1.5 md:p-2 text-zinc-400 hover:text-emerald-400 transition-colors"
                             title="Edit"
                             whileHover={{ scale: 1.2 }}
                           >
@@ -154,7 +154,7 @@ export default function TransactionTable() {
                           </motion.button>
                           <motion.button
                             onClick={() => handleDelete(tx.id)}
-                            className="p-2 text-zinc-400 hover:text-red-400 transition-colors"
+                            className="p-1.5 md:p-2 text-zinc-400 hover:text-red-400 transition-colors"
                             title="Delete"
                             whileHover={{ scale: 1.2 }}
                           >
@@ -182,6 +182,85 @@ export default function TransactionTable() {
         )}
       </div>
 
+      {/* Mobile Card View */}
+      <div className="md:hidden space-y-3">
+        {filtered.length > 0 ? (
+          filtered.map((tx, index) => (
+            <motion.div
+              key={tx.id}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: index * 0.05 }}
+              className="rounded-lg border border-zinc-800 bg-zinc-900 p-4"
+            >
+              <div className="space-y-3">
+                {/* Top row */}
+                <div className="flex items-start justify-between">
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm text-zinc-100 font-medium truncate">{tx.description}</p>
+                    <p className="text-xs text-zinc-500 mt-1">{formatDate(tx.date)}</p>
+                  </div>
+                  <span
+                    className={`ml-2 text-right whitespace-nowrap font-semibold text-sm ${tx.type === 'income'
+                        ? 'text-emerald-400'
+                        : 'text-red-400'
+                      }`}
+                  >
+                    {tx.type === 'income' ? '+' : '-'}
+                    {formatCurrency(Math.abs(tx.amount))}
+                  </span>
+                </div>
+
+                {/* Category and Type */}
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex-1 flex items-center gap-2">
+                    <p className="text-xs text-zinc-500">{tx.category}</p>
+                    <span
+                      className={`inline-block px-2 py-0.5 rounded-full text-xs font-semibold ${tx.type === 'income'
+                          ? 'bg-emerald-400/20 text-emerald-400'
+                          : 'bg-red-400/20 text-red-400'
+                        }`}
+                    >
+                      {tx.type === 'income' ? 'Income' : 'Expense'}
+                    </span>
+                  </div>
+                  {role === 'admin' && (
+                    <div className="flex items-center gap-1">
+                      <motion.button
+                        onClick={() => handleEdit(tx)}
+                        className="p-1.5 text-zinc-400 hover:text-emerald-400 transition-colors"
+                        title="Edit"
+                        whileHover={{ scale: 1.2 }}
+                      >
+                        ✏️
+                      </motion.button>
+                      <motion.button
+                        onClick={() => handleDelete(tx.id)}
+                        className="p-1.5 text-zinc-400 hover:text-red-400 transition-colors"
+                        title="Delete"
+                        whileHover={{ scale: 1.2 }}
+                      >
+                        🗑️
+                      </motion.button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          ))
+        ) : (
+          <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-8 text-center">
+            <div className="text-4xl mb-3">⚠️</div>
+            <h3 className="text-base font-semibold text-zinc-300 mb-2">
+              No transactions found
+            </h3>
+            <p className="text-xs text-zinc-500">
+              Try adjusting your filters or add a new transaction
+            </p>
+          </div>
+        )}
+      </div>
+
       {/* Floating Add Button (Admin Only) */}
       {role === 'admin' && (
         <motion.button
@@ -189,7 +268,7 @@ export default function TransactionTable() {
             setEditingTransaction(null)
             setIsModalOpen(true)
           }}
-          className="fixed bottom-8 right-8 w-14 h-14 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-500 text-white font-bold shadow-lg hover:shadow-emerald-400/50 transition-all flex items-center justify-center text-2xl"
+          className="fixed bottom-6 md:bottom-8 right-4 md:right-8 w-12 md:w-14 h-12 md:h-14 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-500 text-white font-bold shadow-lg hover:shadow-emerald-400/50 transition-all flex items-center justify-center text-xl md:text-2xl"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >

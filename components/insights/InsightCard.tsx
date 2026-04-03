@@ -34,18 +34,18 @@ export default function InsightCard({
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className={`rounded-lg border p-6 ${colorClasses[statusColor]}`}
+      className={`rounded-lg border p-4 md:p-6 ${colorClasses[statusColor]}`}
     >
-      <div className="flex items-start justify-between mb-4">
-        <div>
-          <p className="text-sm text-zinc-400 font-medium mb-1">{title}</p>
-          <p className={`text-3xl font-bold ${textColorClasses[statusColor]}`}>
+      <div className="flex items-start md:items-center justify-between gap-2 mb-3 md:mb-4">
+        <div className="flex-1 min-w-0">
+          <p className="text-xs md:text-sm text-zinc-400 font-medium mb-1">{title}</p>
+          <p className={`text-2xl md:text-3xl font-bold ${textColorClasses[statusColor]} break-words`}>
             {value}
           </p>
         </div>
-        <span className="text-4xl">{icon}</span>
+        <span className="text-3xl md:text-4xl flex-shrink-0">{icon}</span>
       </div>
-      <p className="text-sm text-zinc-500">{description}</p>
+      <p className="text-xs md:text-sm text-zinc-500">{description}</p>
     </motion.div>
   )
 }

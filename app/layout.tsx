@@ -18,6 +18,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Finance Dashboard",
   description: "Modern fintech dashboard with real-time analytics",
+  viewport: "width=device-width, initial-scale=1, maximum-scale=5",
 };
 
 export default function RootLayout({
@@ -38,7 +39,7 @@ export default function RootLayout({
             <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
               <div className="flex-1 flex flex-col">
                 <Topbar />
-                <main className="flex-1 overflow-auto">
+                <main className="flex-1 overflow-auto scroll-smooth">
                   {children}
                 </main>
               </div>

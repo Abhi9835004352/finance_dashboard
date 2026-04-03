@@ -24,7 +24,7 @@ export default function TransactionsPage() {
   }
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-3 md:p-6 space-y-3 md:space-y-6">
       <TransactionFilters onExport={handleExport} />
       <TransactionTable />
     </div>

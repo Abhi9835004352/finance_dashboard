@@ -20,12 +20,12 @@ export default function MonthlyComparisonChart({
   data,
 }: MonthlyComparisonChartProps) {
   return (
-    <div className="rounded-lg border border-blue-800 bg-blue-400/5 p-6 col-span-1 lg:col-span-2">
-      <h3 className="text-lg font-semibold text-zinc-100 mb-4">
+    <div className="rounded-lg border border-blue-800 bg-blue-400/5 p-4 md:p-6 col-span-1 lg:col-span-2">
+      <h3 className="text-base md:text-lg font-semibold text-zinc-100 mb-2 md:mb-4">
         Monthly Income vs Expenses
       </h3>
 
-      <ResponsiveContainer width="100%" height={300}>
+      <ResponsiveContainer width="100%" height={250}>
         <BarChart data={data}>
           <CartesianGrid strokeDasharray="3 3" stroke="#3f3f46" />
           <XAxis

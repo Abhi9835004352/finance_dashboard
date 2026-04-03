@@ -37,9 +37,9 @@ export default function SpendingDonutChart({ transactions }: SpendingDonutChartP
   const totalExpenses = chartData.reduce((sum, item) => sum + item.value, 0)
 
   return (
-    <div className="col-span-1 rounded-lg border border-amber-800 bg-amber-400/5 p-6">
-      <h3 className="text-lg font-semibold text-zinc-100 mb-4">Spending by Category</h3>
-      <p className="text-sm text-zinc-400 mb-6">Donut chart</p>
+    <div className="col-span-1 rounded-lg border border-amber-800 bg-amber-400/5 p-4 md:p-6">
+      <h3 className="text-base md:text-lg font-semibold text-zinc-100 mb-2 md:mb-4">Spending by Category</h3>
+      <p className="text-xs md:text-sm text-zinc-400 mb-4 md:mb-6">Donut chart</p>
 
       {chartData.length > 0 ? (
         <>
@@ -52,7 +52,7 @@ export default function SpendingDonutChart({ transactions }: SpendingDonutChartP
                   borderRadius: '8px',
                   color: '#fafafa',
                 }}
-                formatter={(value: number) => `$${value.toLocaleString()}`}
+                formatter={(value) => `$${typeof value === 'number' ? value.toLocaleString() : 0}`}
               />
               <Pie
                 data={chartData}
