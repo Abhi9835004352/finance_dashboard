@@ -12,7 +12,7 @@ import SummaryCard from '@/components/dashboard/SummaryCard'
 import BalanceTrendChart from '@/components/dashboard/BalanceTrendChart'
 import SpendingDonutChart from '@/components/dashboard/SpendingDonutChart'
 
-export default function Home() {
+export default function DashboardPage() {
   const { transactions } = useFinanceStore()
 
   const balance = calculateBalance(transactions)
